@@ -6,23 +6,29 @@ using UnityEngine;
 public class doorOpenClose : MonoBehaviour
 {
     [SerializeField] private Animator doorAnim;
-    private Animator animator;
+    //[SerializeField] private GameObject roomTwo;
+    //[SerializeField] private GameObject playerTag;
+    //[SerializeField] private GameObject cubeWhite, cubeBlack;
     private string ENTER_COLL = "enterColide";
-    private string EXIT_COL = "exitColide";
-    
+    //private roomOneFloor a;
 
     void OnTriggerEnter(Collider col)
     {
             OpenDoor();
+            /*if (doorAnim.GetBool(ENTER_COLL) == true & GameObject.FindWithTag("Player"))
+            {
+                a.GenerateCubesRoom1(cubeBlack, cubeWhite, roomTwo, 1);
+            }*/
     }
     
     void OnTriggerExit(Collider col)
     {
 
             CloseDoor();
+            
         
     }
-    
+        
     private void OpenDoor()
     {
         if (doorAnim != null)

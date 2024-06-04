@@ -10,20 +10,20 @@ public class roomOneFloor : MonoBehaviour
     private float distanceBetweenTiles = 1f;
     
     [ContextMenu("GenerateCubesRoom1")]
-    private void GenerateCubesRoom1()
+    public void GenerateCubesRoom1(GameObject bC, GameObject wC, GameObject spawnObj, float tilesDistance)
     {
         for (int i = 0; i < 100; i++)
         {
             for (int j = 0; j < 100; j++)
             {
-                Vector3 position = new Vector3(i * distanceBetweenTiles, 0, j * distanceBetweenTiles);
+                Vector3 position = new Vector3(i * tilesDistance, 0, j * tilesDistance);
                 GameObject cube;
                 if ((i + j) % 2 == 0){
-                    cube = whiteCube;
+                    cube = wC;
                 }else{
-                    cube = blackCube;
+                    cube = bC;
                 }
-                Instantiate(cube, position, Quaternion.identity, roomOne.transform);
+                Instantiate(cube, position, Quaternion.identity, spawnObj.transform);
             }
         }
     }
