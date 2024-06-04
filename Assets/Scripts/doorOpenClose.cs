@@ -20,14 +20,14 @@ public class doorOpenClose : MonoBehaviour
                 a.GenerateCubesRoom1(cubeBlack, cubeWhite, roomTwo, 1);
             }*/
     }
-    
+    /*
     void OnTriggerExit(Collider col)
     {
 
             CloseDoor();
             
         
-    }
+    }*/
         
     private void OpenDoor()
     {
