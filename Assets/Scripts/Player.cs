@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,18 +13,13 @@ public class Player : MonoBehaviour
     [SerializeField] private LayerMask _layerMask;
     public bool isWalking;
     private Vector3 lastInteractDir;
-    private void Update()
+
+    private void Start()
     {
-        HandleMovement();
-        HandleInteraction();
+        _gameInput.OnInteractAction += GameInput_OnInteractAction;
     }
 
-    public bool Walking()
-    {
-        return !isWalking;
-    }
-
-    private void HandleInteraction()
+    private void GameInput_OnInteractAction(object sender, System.EventArgs e)
     {
         Vector2 input = _gameInput.GetMovementVectorNormalized();
         Vector3 movDir = new Vector3(input.x, 0f, input.y);
@@ -42,6 +38,38 @@ public class Player : MonoBehaviour
                 clearCounter.Iteract();
             }
         }
+    }
+
+    private void Update()
+    {
+        HandleMovement();
+        HandleInteraction();
+    }
+
+    public bool Walking()
+    {
+        return !isWalking;
+    }
+
+    private void HandleInteraction()
+    {/*
+        Vector2 input = _gameInput.GetMovementVectorNormalized();
+        Vector3 movDir = new Vector3(input.x, 0f, input.y);
+        
+        if (movDir != Vector3.zero)
+        {
+            lastInteractDir = movDir;
+        }
+        
+        float interactDistance = 2f;
+        if (Physics.Raycast(transform.position, lastInteractDir, out RaycastHit raycastHit, interactDistance, _layerMask))
+        {
+            if (raycastHit.transform.TryGetComponent(out ClearCounter clearCounter))
+            {
+                //Has ClearCounter
+                clearCounter.Iteract();
+            }
+        }*/
     }
     
     private void HandleMovement()

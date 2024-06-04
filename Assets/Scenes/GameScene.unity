@@ -11531,6 +11531,9 @@ MonoBehaviour:
   rotateSpeed: 5
   _playerRadius: 0.5
   _playerHeight: 0.3
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 64
   isWalking: 0
 --- !u!4 &2101366111
 Transform:
