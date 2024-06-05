@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        Physics.IgnoreLayerCollision(8,8);
         _gameInput.OnInteractAction += GameInput_OnInteractAction;
     }
 
