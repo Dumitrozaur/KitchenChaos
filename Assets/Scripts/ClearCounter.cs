@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class ClearCounter : MonoBehaviour
 {
+    [SerializeField] private GameObject tomatoPrefab;
+    [SerializeField] private Transform counterTopPoit;
+    
     public void Iteract()
     {
-        Debug.Log("Interact!");
+        var spawnedObj = Instantiate(tomatoPrefab, counterTopPoit);
+        spawnedObj.transform.localPosition = Vector3.zero;
     }
 }
