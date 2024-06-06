@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -42,13 +43,16 @@ public class Player : MonoBehaviour
 
     private void GameInput_OnInteractAction(object sender, System.EventArgs e)
     {
-        HandleInteraction();
+        if (selectedCounter != null)
+        {
+            selectedCounter.Iteract();
+        }
     }
 
     private void Update()
     {
         HandleMovement();
-        //HandleInteraction();
+        HandleInteraction();
     }
 
     public bool Walking()
@@ -71,7 +75,6 @@ public class Player : MonoBehaviour
         {
             if (raycastHit.transform.TryGetComponent(out ClearCounter clearCounter))
             {
-                clearCounter.Iteract();
                 SetSelectedCounter(clearCounter);
             }
             else
