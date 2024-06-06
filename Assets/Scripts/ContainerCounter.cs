@@ -1,13 +1,11 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ClearCounter : BaseCounter, IKitchenObjectParent
+public class ContainerCounter : BaseCounter, IKitchenObjectParent
 {
     [SerializeField] private KitchenObjectSO _kitchenObjectSo;
     [SerializeField] private Transform counterTopPoit;
-
     
     private KitchenObject _kitchenObject;
     
@@ -50,4 +48,3 @@ public class ClearCounter : BaseCounter, IKitchenObjectParent
         return _kitchenObject != null;
     }
 }
-

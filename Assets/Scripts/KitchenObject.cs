@@ -14,7 +14,7 @@ public class KitchenObject : MonoBehaviour
       return _kitchenObjectSo;
    }
 
-   public void SetClearCounter(IKitchenObjectParent kitchenObjectParent)
+   public void SetKitchenObjectParent(IKitchenObjectParent kitchenObjectParent)
    {
        if(this.kitchenObjectPare != null){
            this.kitchenObjectPare.ClearKitchenObject();
@@ -28,7 +28,7 @@ public class KitchenObject : MonoBehaviour
        transform.localPosition = UnityEngine.Vector3.zero;
    }
 
-   public IKitchenObjectParent GetClearCounter()
+   public IKitchenObjectParent GetKitchenObject()
    {
        return kitchenObjectPare;
    }
