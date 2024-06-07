@@ -35,10 +35,6 @@ public class CuttingCounter : BaseCounter, IKitchenObjectParent
                 //Not carring
                 GetKitchenObject().SetKitchenObjectParent(player);
             }
-
-            {
-
-            }
         }
     }
 
@@ -47,6 +43,7 @@ public class CuttingCounter : BaseCounter, IKitchenObjectParent
         if (HasKitchenObject())
         {
             //There is a obj here
+            Debug.Log("CuttingCounter alternateInteract");
             GetKitchenObject().DestroySelf();
             Transform kitchenObjectTransform = Instantiate(cutKitObjectSO.prefab);
             kitchenObjectTransform.GetComponent<KitchenObject>().SetKitchenObjectParent(this);

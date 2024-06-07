@@ -8,6 +8,7 @@ public class doorOpenClose : MonoBehaviour
     [SerializeField] private Animator doorAnim;
     [SerializeField] private GameObject animTrigg;
     private string ENTER_COLL = "enterColide";
+    [SerializeField] private GameObject room;
     
 
     void OnTriggerEnter(Collider col)
@@ -20,6 +21,8 @@ public class doorOpenClose : MonoBehaviour
     {
         
         CloseDoor();
+        ShowFloor();
+        
     }
 
     private void OpenDoor()
@@ -37,5 +40,10 @@ public class doorOpenClose : MonoBehaviour
             doorAnim.SetBool(ENTER_COLL, false);
             
         }
+    }
+
+    private void ShowFloor()
+    {
+         room.SetActive(true);
     }
 }

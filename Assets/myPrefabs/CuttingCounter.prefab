@@ -56,7 +56,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1662008151632149692, guid: bdbd579ad0cef4043ac61354fad64036, type: 3}
     m_RemovedGameObjects:
     - {fileID: 535512179574558889, guid: bdbd579ad0cef4043ac61354fad64036, type: 3}
     - {fileID: 8065416682972774869, guid: bdbd579ad0cef4043ac61354fad64036, type: 3}
@@ -67,19 +68,30 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7349714711627238254, guid: bdbd579ad0cef4043ac61354fad64036, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6078633432088714818}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2123294923567110843, guid: bdbd579ad0cef4043ac61354fad64036, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2603179339114053498}
   m_SourcePrefab: {fileID: 100100000, guid: bdbd579ad0cef4043ac61354fad64036, type: 3}
---- !u!114 &3833783252416359601 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1662008151632149692, guid: bdbd579ad0cef4043ac61354fad64036, type: 3}
+--- !u!1 &4563135357022079670 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2123294923567110843, guid: bdbd579ad0cef4043ac61354fad64036, type: 3}
   m_PrefabInstance: {fileID: 2460361870696517645}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+--- !u!114 &2603179339114053498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4563135357022079670}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3b98ef485bae4947afb9fdb75cf7183, type: 3}
+  m_Script: {fileID: 11500000, guid: 2bf4a79d6917bfc4495924fe2637d8e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _kitchenObjectSo: {fileID: 0}
+  counterTopPoit: {fileID: 0}
 --- !u!4 &5177899885047389027 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7349714711627238254, guid: bdbd579ad0cef4043ac61354fad64036, type: 3}
@@ -224,7 +236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc638b49b82825d48a8c060004b8e59d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentCounter: {fileID: 3833783252416359601}
+  currentCounter: {fileID: 0}
   selectedCounter:
   - {fileID: 1982994125266048576}
   - {fileID: 2551906739561280169}

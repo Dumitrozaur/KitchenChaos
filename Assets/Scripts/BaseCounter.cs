@@ -11,7 +11,7 @@ public class BaseCounter : MonoBehaviour
 
     public virtual void InteractAlternate(Player player)
     {
-        Debug.LogError("BaseCounter.Interact()");
+        Debug.LogError("BaseCounter.InteractAlternate()");
     }
     
 }
