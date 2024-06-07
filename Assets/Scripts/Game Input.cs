@@ -9,7 +9,9 @@ using Debug = System.Diagnostics.Debug;
 
 public class GameInput : MonoBehaviour
 {
-    public event EventHandler OnInteractAction; 
+    public event EventHandler OnInteractAction;
+    public event EventHandler OnInteractAlternateAction;
+    
     private PlayerGameInput _playerInput;
     private void Awake()
     {
@@ -17,8 +19,14 @@ public class GameInput : MonoBehaviour
         _playerInput.Player.Enable();
 
         _playerInput.Player.Interact.performed += Interact_performed;
+        _playerInput.Player.InteractAlternate.performed += InteractAlternate_performed;
     }
 
+    private void InteractAlternate_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    {
+        OnInteractAlternateAction?.Invoke(this, EventArgs.Empty);
+    }
+    
     private void Interact_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
         if (OnInteractAction != null)

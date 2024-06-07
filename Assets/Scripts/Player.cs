@@ -41,8 +41,17 @@ public class Player : MonoBehaviour, IKitchenObjectParent
     private void Start()
     {
         _gameInput.OnInteractAction += GameInput_OnInteractAction;
+        _gameInput.OnInteractAlternateAction += GameInput_OnInteractAlternateAction;
     }
 
+    private void GameInput_OnInteractAlternateAction(object sender, System.EventArgs e)
+    {
+        if (selectedCounter != null)
+        {
+            selectedCounter.InteractAlternate(this);
+        }
+    }
+    
     private void GameInput_OnInteractAction(object sender, System.EventArgs e)
     {
         if (selectedCounter != null)
@@ -99,7 +108,7 @@ public class Player : MonoBehaviour, IKitchenObjectParent
         var moveDistance = MovSpeed * Time.deltaTime;
         var step = movDir * moveDistance;
         
-        bool canMove = !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * _playerHeight, _playerRadius, movDir, moveDistance);
+        bool canMove =!Physics.CapsuleCast(transform.position, transform.position + Vector3.up * _playerHeight, _playerRadius, movDir, moveDistance);
         
         isWalking = movDir != Vector3.zero;
         if (!canMove)

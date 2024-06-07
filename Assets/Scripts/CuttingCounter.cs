@@ -1,14 +1,13 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ClearCounter : BaseCounter, IKitchenObjectParent
+public class CuttingCounter : BaseCounter, IKitchenObjectParent
 {
-    [SerializeField] private KitchenObjectSO _kitchenObjectSo;
     [SerializeField] private Transform kitchenObjectHoldPoint;
+    [SerializeField] private KitchenObjectSO cutKitObjectSO;
     private KitchenObject _kitchenObject;
-    
+
     public override void Interact(Player player)
     {
         if (!HasKitchenObject())
@@ -29,16 +28,28 @@ public class ClearCounter : BaseCounter, IKitchenObjectParent
             //ther is 
             if (player.HasKitchenObject())
             {
-                
+
             }
             else
             {
                 //Not carring
                 GetKitchenObject().SetKitchenObjectParent(player);
             }
+
             {
-                
+
             }
+        }
+    }
+
+    public override void InteractAlternate(Player player)
+    {
+        if (HasKitchenObject())
+        {
+            //There is a obj here
+            GetKitchenObject().DestroySelf();
+            Transform kitchenObjectTransform = Instantiate(cutKitObjectSO.prefab);
+            kitchenObjectTransform.GetComponent<KitchenObject>().SetKitchenObjectParent(this);
         }
     }
     
@@ -67,4 +78,3 @@ public class ClearCounter : BaseCounter, IKitchenObjectParent
         return _kitchenObject != null;
     }
 }
-
