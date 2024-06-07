@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.Mail;
 using UnityEngine;
 
 public class CuttingCounter : BaseCounter, IKitchenObjectParent
@@ -8,6 +10,8 @@ public class CuttingCounter : BaseCounter, IKitchenObjectParent
     [SerializeField] private KitchenObjectSO cutKitObjectSO;
     private KitchenObject _kitchenObject;
 
+    [SerializeField] private CuttingRecipies[] cuttingRecipies;
+    
     public override void Interact(Player player)
     {
         if (!HasKitchenObject())
@@ -48,6 +52,19 @@ public class CuttingCounter : BaseCounter, IKitchenObjectParent
             Transform kitchenObjectTransform = Instantiate(cutKitObjectSO.prefab);
             kitchenObjectTransform.GetComponent<KitchenObject>().SetKitchenObjectParent(this);
         }
+    }
+
+    private KitchenObjectSO GetOutputForInput(KitchenObject kitchenObject)
+    {
+        foreach (var recipie in cuttingRecipies)
+        {
+            if (recipie.input = kitchenObject.GetKitchenObjectSo())
+            {
+                return recipie.output;
+            }
+        }
+
+        return null;
     }
     
     public Transform GetKitchenObjectFollowTransform()
