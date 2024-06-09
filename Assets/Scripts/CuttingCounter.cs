@@ -7,7 +7,7 @@ using UnityEngine;
 public class CuttingCounter : BaseCounter, IKitchenObjectParent
 {
     [SerializeField] private Transform kitchenObjectHoldPoint;
-    [SerializeField] private KitchenObjectSO cutKitObjectSO;
+    private KitchenObjectSO cutKitObjectSO;
     private KitchenObject _kitchenObject;
 
     [SerializeField] private CuttingRecipies[] cuttingRecipies;
@@ -16,27 +16,38 @@ public class CuttingCounter : BaseCounter, IKitchenObjectParent
     {
         if (!HasKitchenObject())
         {
-            //There is no kitObj
+            // There is no kitchen object on the counter
             if (player.HasKitchenObject())
             {
-                //Player carrying
-                player.GetKitchenObject().SetKitchenObjectParent(this);
+                // Player is carrying a kitchen object
+                KitchenObject playerKitchenObject = player.GetKitchenObject();
+                if (IsKitchenObjectInRecipe(playerKitchenObject))
+                {
+                    // If the player's kitchen object is in the recipe list, place it on the counter
+                    playerKitchenObject.SetKitchenObjectParent(this);
+                }
             }
             else
             {
-                //Not caring
+                // Player is not carrying anything
             }
         }
         else
         {
-            //ther is 
+            // There is a kitchen object on the counter
             if (player.HasKitchenObject())
             {
-
+                // Player is carrying a kitchen object
+                KitchenObject playerKitchenObject = player.GetKitchenObject();
+                if (IsKitchenObjectInRecipe(playerKitchenObject))
+                {
+                    // If the player's kitchen object is in the recipe list, place it on the counter
+                    playerKitchenObject.SetKitchenObjectParent(this);
+                }
             }
             else
             {
-                //Not carring
+                // Player is not carrying anything, so they take the kitchen object from the counter
                 GetKitchenObject().SetKitchenObjectParent(player);
             }
         }
@@ -46,25 +57,43 @@ public class CuttingCounter : BaseCounter, IKitchenObjectParent
     {
         if (HasKitchenObject())
         {
-            //There is a obj here
+            // There is a kitchen object here
             Debug.Log("CuttingCounter alternateInteract");
-            GetKitchenObject().DestroySelf();
-            Transform kitchenObjectTransform = Instantiate(cutKitObjectSO.prefab);
-            kitchenObjectTransform.GetComponent<KitchenObject>().SetKitchenObjectParent(this);
+            KitchenObject kitchenObject = GetKitchenObject();
+            KitchenObjectSO output = GetOutputForInput(kitchenObject.GetKitchenObjectSo());
+
+            if (output != null)
+            {
+                kitchenObject.DestroySelf();
+                KitchenObject newKitchenObject = Instantiate(output.prefab).GetComponent<KitchenObject>();
+                newKitchenObject.SetKitchenObjectParent(this);
+            }
         }
     }
 
-    private KitchenObjectSO GetOutputForInput(KitchenObject kitchenObject)
+    private KitchenObjectSO GetOutputForInput(KitchenObjectSO inputKitchenObjectSO)
     {
         foreach (var recipie in cuttingRecipies)
         {
-            if (recipie.input = kitchenObject.GetKitchenObjectSo())
+            if (recipie.input == inputKitchenObjectSO)
             {
                 return recipie.output;
             }
         }
 
         return null;
+    }
+    
+    private bool IsKitchenObjectInRecipe(KitchenObject kitchenObject)
+    {
+        foreach (var recipe in cuttingRecipies)
+        {
+            if (recipe.input == kitchenObject.GetKitchenObjectSo())
+            {
+                return true;
+            }
+        }
+        return false;
     }
     
     public Transform GetKitchenObjectFollowTransform()

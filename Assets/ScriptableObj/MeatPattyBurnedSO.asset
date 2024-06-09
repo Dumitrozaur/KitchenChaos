@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f70e9c592b726a48b9d12923f7b6a87, type: 3}
-  m_Name: Tomato
+  m_Name: MeatPattyBurnedSO
   m_EditorClassIdentifier: 
-  prefab: {fileID: 1777120391115124370, guid: c6a09662786b745478ca06dc44041468, type: 3}
-  sprite: {fileID: 21300000, guid: 91e8fe3de9249fc44b7bdd8050062896, type: 3}
-  objectName: Tomato
+  prefab: {fileID: 8706709824341920543, guid: a29029f8504bc424c8a0eb63324fbf57, type: 3}
+  sprite: {fileID: 21300000, guid: 713ea9afa60dd6e4ebf6503a33e8cc99, type: 3}
+  objectName: MeatPattyBurned
