@@ -97,7 +97,7 @@ public class CuttingCounter : BaseCounter, IKitchenObjectParent
         foreach (CuttingRecipies cuttingRecipiesSO  in cuttingRecipies)
         {
             if (cuttingRecipiesSO.input == kitchenObject) ;
-            return cuttingRecipiesSO.input;
+            return cuttingRecipiesSO.output;
         }
 
         return null; 
