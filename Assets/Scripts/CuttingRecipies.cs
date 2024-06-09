@@ -7,5 +7,5 @@ public class CuttingRecipies : ScriptableObject
 {
     public KitchenObjectSO input;
     public KitchenObjectSO output;
-
+    public int cuttingMAX;
 }

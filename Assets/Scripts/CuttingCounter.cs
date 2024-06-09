@@ -6,95 +6,116 @@ using UnityEngine;
 
 public class CuttingCounter : BaseCounter, IKitchenObjectParent
 {
+
+    public event EventHandler<OnProgressChangedEventArgs> OnProgressChanged;
+    public class OnProgressChangedEventArgs: EventArgs
+    {
+        public float progressNormalized;
+    }
+    
     [SerializeField] private Transform kitchenObjectHoldPoint;
-    private KitchenObjectSO cutKitObjectSO;
+    
     private KitchenObject _kitchenObject;
 
     [SerializeField] private CuttingRecipies[] cuttingRecipies;
-    
+
+    private int cuttingProgress;
     public override void Interact(Player player)
     {
         if (!HasKitchenObject())
         {
-            // There is no kitchen object on the counter
             if (player.HasKitchenObject())
             {
-                // Player is carrying a kitchen object
-                KitchenObject playerKitchenObject = player.GetKitchenObject();
-                if (IsKitchenObjectInRecipe(playerKitchenObject))
+                if (HasRecipeWithInput(player.GetKitchenObject().GetKitchenObjectSo()))
                 {
-                    // If the player's kitchen object is in the recipe list, place it on the counter
-                    playerKitchenObject.SetKitchenObjectParent(this);
+                    player.GetKitchenObject().SetKitchenObjectParent(this);
+                    cuttingProgress = 0;
+                    CuttingRecipies cuttingRecipeSo = GetCuttingRecipeSOWithInput(GetKitchenObject().GetKitchenObjectSo());
+
+                    OnProgressChanged?.Invoke(this,new OnProgressChangedEventArgs
+                    {
+                        progressNormalized =  (float)cuttingProgress / cuttingRecipeSo.cuttingMAX
+                    });
                 }
             }
-            else
-            {
-                // Player is not carrying anything
-            }
+
+
         }
         else
         {
-            // There is a kitchen object on the counter
             if (player.HasKitchenObject())
             {
-                // Player is carrying a kitchen object
-                KitchenObject playerKitchenObject = player.GetKitchenObject();
-                if (IsKitchenObjectInRecipe(playerKitchenObject))
-                {
-                    // If the player's kitchen object is in the recipe list, place it on the counter
-                    playerKitchenObject.SetKitchenObjectParent(this);
-                }
+
             }
             else
             {
-                // Player is not carrying anything, so they take the kitchen object from the counter
                 GetKitchenObject().SetKitchenObjectParent(player);
             }
         }
     }
 
+
     public override void InteractAlternate(Player player)
     {
-        if (HasKitchenObject())
+        if (HasKitchenObject() && HasRecipeWithInput(GetKitchenObject().GetKitchenObjectSo()))
         {
-            // There is a kitchen object here
-            Debug.Log("CuttingCounter alternateInteract");
-            KitchenObject kitchenObject = GetKitchenObject();
-            KitchenObjectSO output = GetOutputForInput(kitchenObject.GetKitchenObjectSo());
+            cuttingProgress++;
+            
+            
+            CuttingRecipies cuttingRecipeSO = GetCuttingRecipeSOWithInput(GetKitchenObject().GetKitchenObjectSo());
 
-            if (output != null)
+            
+            
+            OnProgressChanged?.Invoke(this,new OnProgressChangedEventArgs
             {
-                kitchenObject.DestroySelf();
-                KitchenObject newKitchenObject = Instantiate(output.prefab).GetComponent<KitchenObject>();
-                newKitchenObject.SetKitchenObjectParent(this);
+                progressNormalized =  (float)cuttingProgress / cuttingRecipeSO.cuttingMAX
+            });
+            
+            
+            
+            
+            
+            if (cuttingProgress >= cuttingRecipeSO.cuttingMAX)
+            {
+            
+                KitchenObjectSO outputKitchenObjcetSo = GetOutputForInput(GetKitchenObject().GetKitchenObjectSo());
+                GetKitchenObject().DestroySelf();
+                KitchenObject.SpawnKitchenObject(outputKitchenObjcetSo, this);
             }
+            
         }
     }
-
-    private KitchenObjectSO GetOutputForInput(KitchenObjectSO inputKitchenObjectSO)
+    
+    private bool HasRecipeWithInput(KitchenObjectSO inputKitchenObjectSo)
     {
-        foreach (var recipie in cuttingRecipies)
+        CuttingRecipies cuttingRecipieSO = GetCuttingRecipeSOWithInput(inputKitchenObjectSo);
+        return cuttingRecipieSO != null;
+    }
+    
+    private KitchenObjectSO GetOutputForInput(KitchenObjectSO kitchenObject)
+    {
+        foreach (CuttingRecipies cuttingRecipiesSO  in cuttingRecipies)
         {
-            if (recipie.input == inputKitchenObjectSO)
+            if (cuttingRecipiesSO.input == kitchenObject) ;
+            return cuttingRecipiesSO.input;
+        }
+
+        return null; 
+    }
+
+    private CuttingRecipies GetCuttingRecipeSOWithInput(KitchenObjectSO inputKitchenObjectSO)
+    {
+        foreach (CuttingRecipies cuttingRecipeSo in cuttingRecipies)
+        {
+            if (cuttingRecipeSo.input == inputKitchenObjectSO)
             {
-                return recipie.output;
+                return cuttingRecipeSo;
             }
         }
 
         return null;
     }
-    
-    private bool IsKitchenObjectInRecipe(KitchenObject kitchenObject)
-    {
-        foreach (var recipe in cuttingRecipies)
-        {
-            if (recipe.input == kitchenObject.GetKitchenObjectSo())
-            {
-                return true;
-            }
-        }
-        return false;
-    }
+
     
     public Transform GetKitchenObjectFollowTransform()
     {
