@@ -1,7 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Net.Mail;
 using UnityEngine;
 
 public class CuttingCounter : BaseCounter, IKitchenObjectParent
@@ -10,7 +7,7 @@ public class CuttingCounter : BaseCounter, IKitchenObjectParent
     public event EventHandler<OnProgressChangedEventArgs> OnProgressChanged;
     public class OnProgressChangedEventArgs: EventArgs
     {
-        public float progressNormalized;
+        public float ProgressNormalized;
     }
     
     [SerializeField] private Transform kitchenObjectHoldPoint;
@@ -19,7 +16,7 @@ public class CuttingCounter : BaseCounter, IKitchenObjectParent
 
     [SerializeField] private CuttingRecipies[] cuttingRecipies;
 
-    private int cuttingProgress;
+    public int cuttingProgress;
     public override void Interact(Player player)
     {
         if (!HasKitchenObject())
@@ -30,11 +27,11 @@ public class CuttingCounter : BaseCounter, IKitchenObjectParent
                 {
                     player.GetKitchenObject().SetKitchenObjectParent(this);
                     cuttingProgress = 0;
-                    CuttingRecipies cuttingRecipeSo = GetCuttingRecipeSOWithInput(GetKitchenObject().GetKitchenObjectSo());
+                    CuttingRecipies cuttingRecipeSo = GetcuttingRecipeSoWithInput(GetKitchenObject().GetKitchenObjectSo());
 
                     OnProgressChanged?.Invoke(this,new OnProgressChangedEventArgs
                     {
-                        progressNormalized =  (float)cuttingProgress / cuttingRecipeSo.cuttingMAX
+                        ProgressNormalized =  (float)cuttingProgress / cuttingRecipeSo.cuttingMAX
                     });
                 }
             }
@@ -62,20 +59,17 @@ public class CuttingCounter : BaseCounter, IKitchenObjectParent
             cuttingProgress++;
             
             
-            CuttingRecipies cuttingRecipeSO = GetCuttingRecipeSOWithInput(GetKitchenObject().GetKitchenObjectSo());
+            CuttingRecipies cuttingRecipeSo = GetcuttingRecipeSoWithInput(GetKitchenObject().GetKitchenObjectSo());
 
             
             
             OnProgressChanged?.Invoke(this,new OnProgressChangedEventArgs
             {
-                progressNormalized =  (float)cuttingProgress / cuttingRecipeSO.cuttingMAX
+                ProgressNormalized =  (float)cuttingProgress / cuttingRecipeSo.cuttingMAX
             });
             
             
-            
-            
-            
-            if (cuttingProgress >= cuttingRecipeSO.cuttingMAX)
+            if (cuttingProgress >= cuttingRecipeSo.cuttingMAX)
             {
             
                 KitchenObjectSO outputKitchenObjcetSo = GetOutputForInput(GetKitchenObject().GetKitchenObjectSo());
@@ -88,26 +82,28 @@ public class CuttingCounter : BaseCounter, IKitchenObjectParent
     
     private bool HasRecipeWithInput(KitchenObjectSO inputKitchenObjectSo)
     {
-        CuttingRecipies cuttingRecipieSO = GetCuttingRecipeSOWithInput(inputKitchenObjectSo);
-        return cuttingRecipieSO != null;
+        CuttingRecipies cuttingRecipieSo = GetcuttingRecipeSoWithInput(inputKitchenObjectSo);
+        return cuttingRecipieSo != null;
     }
     
     private KitchenObjectSO GetOutputForInput(KitchenObjectSO kitchenObject)
     {
-        foreach (CuttingRecipies cuttingRecipiesSO  in cuttingRecipies)
+        foreach (CuttingRecipies cuttingRecipiesSo  in cuttingRecipies)
         {
-            if (cuttingRecipiesSO.input == kitchenObject) ;
-            return cuttingRecipiesSO.output;
+            if (cuttingRecipiesSo.input == kitchenObject)
+            {
+                return cuttingRecipiesSo.output;
+            }
         }
 
         return null; 
     }
 
-    private CuttingRecipies GetCuttingRecipeSOWithInput(KitchenObjectSO inputKitchenObjectSO)
+    private CuttingRecipies GetcuttingRecipeSoWithInput(KitchenObjectSO inputKitchenObjectSo)
     {
         foreach (CuttingRecipies cuttingRecipeSo in cuttingRecipies)
         {
-            if (cuttingRecipeSo.input == inputKitchenObjectSO)
+            if (cuttingRecipeSo.input == inputKitchenObjectSo)
             {
                 return cuttingRecipeSo;
             }
