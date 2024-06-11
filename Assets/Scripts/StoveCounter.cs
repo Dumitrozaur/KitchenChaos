@@ -144,10 +144,19 @@ public class StoveCounter : BaseCounter, IKitchenObjectParent, IHasProgress
         {//daca player are ceva
             if (player.HasKitchenObject())
             {
-                OnStateChanged?.Invoke(this, new OnStateChangedEventArgs()
+                if (player.GetKitchenObject().TryGetPlate(out PlateKitchenObject plateKitchenObject))
                 {
-                    state = State.Idle
-                });
+                    if (plateKitchenObject.TryAddIngredient(GetKitchenObject().GetKitchenObjectSo()))
+                    {
+                        GetKitchenObject().DestroySelf();
+                        
+                        state = State.Idle;
+                        OnStateChanged?.Invoke(this, new OnStateChangedEventArgs()
+                        {
+                            state = state
+                        });
+                    }
+                }
             }
             else
             {
