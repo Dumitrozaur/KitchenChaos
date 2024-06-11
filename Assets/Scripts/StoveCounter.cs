@@ -69,12 +69,16 @@ public class StoveCounter : BaseCounter, IKitchenObjectParent, IHasProgress
                             state = state
                         });
                         
+                        OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs
+                        {
+                            ProgressNormalized = 0f
+                        });
                         
                     }
                     break;
                 case State.Fried:
                     buriningTimer += Time.deltaTime;
-                    
+                    fryingTimer = 0f;
                     OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs
                     {
                         ProgressNormalized = fryingTimer / fryingRecipesSo.fryingTimerMax
@@ -121,6 +125,10 @@ public class StoveCounter : BaseCounter, IKitchenObjectParent, IHasProgress
 
                     state = State.Frying;
                     fryingTimer = 0f;
+                    OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs
+                    {
+                        ProgressNormalized = 0f
+                    });
                     OnStateChanged?.Invoke(this, new OnStateChangedEventArgs()
                     {
                         state = state
@@ -128,11 +136,6 @@ public class StoveCounter : BaseCounter, IKitchenObjectParent, IHasProgress
                     OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs
                     {
                         ProgressNormalized = fryingTimer / fryingRecipesSo.fryingTimerMax
-                    });
-                    
-                    OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs
-                    {
-                        ProgressNormalized = 0f
                     });
                 }
             }

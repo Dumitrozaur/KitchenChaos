@@ -26,19 +26,14 @@ public class PlayerFloorHighlight : MonoBehaviour
 
     void HighlightGrid()
     {
-        // Reset all tiles to default color
         foreach (var tile in gridManager.gridArray)
         {
             tile.GetComponent<Renderer>().material.color = Color.white;
         }
-
-        // Highlight the row
         for (int col = 0; col < gridManager.columns; col++)
         {
             gridManager.gridArray[currentRow, col].GetComponent<Renderer>().material.color = highlightColor;
         }
-
-        // Highlight the column
         for (int row = 0; row < gridManager.rows; row++)
         {
             gridManager.gridArray[row, currentCol].GetComponent<Renderer>().material.color = highlightColor;
