@@ -81,7 +81,7 @@ public class StoveCounter : BaseCounter, IKitchenObjectParent, IHasProgress
                     fryingTimer = 0f;
                     OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs
                     {
-                        ProgressNormalized = fryingTimer / fryingRecipesSo.fryingTimerMax
+                        ProgressNormalized = buriningTimer / burningRecipeSo.burningTimerMax
                     });
                     
                     if (buriningTimer > burningRecipeSo.burningTimerMax)
@@ -114,7 +114,7 @@ public class StoveCounter : BaseCounter, IKitchenObjectParent, IHasProgress
     public override void Interact(Player player)
     {
         if (!HasKitchenObject())
-        {
+        {//Daca nu are obiectul
             if (player.HasKitchenObject())
             {
                 if (HasRecipeWithInput(player.GetKitchenObject().GetKitchenObjectSo()))
@@ -141,10 +141,13 @@ public class StoveCounter : BaseCounter, IKitchenObjectParent, IHasProgress
             }
         }
         else
-        {
+        {//daca player are ceva
             if (player.HasKitchenObject())
             {
-
+                OnStateChanged?.Invoke(this, new OnStateChangedEventArgs()
+                {
+                    state = State.Idle
+                });
             }
             else
             {
