@@ -23,7 +23,7 @@ public class roomOneFloor : MonoBehaviour
                 }else{
                     cube = blackCube;
                 }
-                Instantiate(cube, position, Quaternion.identity, roomThree.transform);
+                Instantiate(cube, position, Quaternion.identity, roomTwo.transform);
             }
         }
     }
@@ -36,7 +36,7 @@ public class roomOneFloor : MonoBehaviour
             for (int j = 0; j < 6; j++)
             {
                 Vector3 position = new Vector3(i * distanceBetweenTiles, j * distanceBetweenTiles, 0);
-                Instantiate(whiteCube, position, Quaternion.identity, roomThree.transform);
+                Instantiate(whiteCube, position, Quaternion.identity, roomTwo.transform);
             }
         }
     }
