@@ -155,6 +155,10 @@ public class StoveCounter : BaseCounter, IKitchenObjectParent, IHasProgress
                         {
                             state = state
                         });
+                        OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs
+                        {
+                            ProgressNormalized = 0f
+                        });
                     }
                 }
             }
@@ -166,6 +170,10 @@ public class StoveCounter : BaseCounter, IKitchenObjectParent, IHasProgress
                 OnStateChanged?.Invoke(this, new OnStateChangedEventArgs()
                 {
                     state = state
+                });
+                OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs
+                {
+                    ProgressNormalized = 0f
                 });
             }
         }

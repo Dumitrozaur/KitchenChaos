@@ -13,8 +13,8 @@ public class FloorMover : MonoBehaviour
     // Initial X position to reset rows to
     public float startXPosition = -10f;
 
-    // Time to move each row
-    public float moveTime = 2f;
+    // Speed of the movement
+    public float moveSpeed = 5f;
 
     // Delay between each row starting its move
     public float rowStartDelay = 0.5f;
@@ -37,7 +37,8 @@ public class FloorMover : MonoBehaviour
             }
 
             // Wait for all rows to finish their move before starting again
-            yield return new WaitForSeconds(moveTime);
+            float totalMoveTime = (endXPosition - startXPosition) / moveSpeed;
+            yield return new WaitForSeconds(totalMoveTime + rowStartDelay * floorRows.Count);
         }
     }
 
@@ -47,21 +48,24 @@ public class FloorMover : MonoBehaviour
         {
             // Move row to the end x position
             Vector3 targetPosition = new Vector3(endXPosition, row.position.y, row.position.z);
-            yield return MoveToPosition(row, targetPosition, moveTime);
+            yield return MoveToPosition(row, targetPosition, moveSpeed);
 
             // Reset row to the initial x position
             row.position = new Vector3(startXPosition, row.position.y, row.position.z);
         }
     }
 
-    IEnumerator MoveToPosition(Transform row, Vector3 targetPosition, float duration)
+    IEnumerator MoveToPosition(Transform row, Vector3 targetPosition, float speed)
     {
         Vector3 startPosition = row.position;
+        float distance = Vector3.Distance(startPosition, targetPosition);
+
         float elapsedTime = 0;
+        float duration = distance / speed;
 
         while (elapsedTime < duration)
         {
-            row.position = Vector3.Lerp(startPosition, targetPosition, (elapsedTime / duration));
+            row.position = Vector3.Lerp(startPosition, targetPosition, elapsedTime / duration);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
