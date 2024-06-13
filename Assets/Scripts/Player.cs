@@ -70,7 +70,8 @@ public class Player : MonoBehaviour, IKitchenObjectParent
     {
         return !isWalking;
     }
-
+    
+    
     private void HandleInteraction()
     {
         Vector2 input = _gameInput.GetMovementVectorNormalized();
@@ -153,6 +154,7 @@ public class Player : MonoBehaviour, IKitchenObjectParent
     {
         return kitchenObjectHoldPoint;
     }
+    
 
     public void SetKitchenObject(KitchenObject kitchenObject)
     {
@@ -162,6 +164,18 @@ public class Player : MonoBehaviour, IKitchenObjectParent
     public KitchenObject GetKitchenObject()
     {
         return _kitchenObject;
+    }
+
+    public bool TryGetPlateObject(out PlateKitchenObject plateKitchenObject)
+    {
+        if (_kitchenObject.TryGetComponent(out PlateKitchenObject plate))
+        {
+            plateKitchenObject = plate;
+            return true;
+        }
+
+        plateKitchenObject = null;
+        return false;
     }
 
     public void ClearKitchenObject()

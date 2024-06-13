@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ContainerCounter : BaseCounter, IKitchenObjectParent
+public class ContainerCounter : BaseCounter
 {
     [SerializeField] private KitchenObjectSO _kitchenObjectSo;
     [SerializeField] private Transform counterTopPoit;
@@ -25,28 +25,5 @@ public class ContainerCounter : BaseCounter, IKitchenObjectParent
         }
     }
 
-    public Transform GetKitchenObjectFollowTransform()
-    {
-        return counterTopPoit;
-    }
-
-    public void SetKitchenObject(KitchenObject kitchenObject)
-    {
-        this._kitchenObject = kitchenObject;
-    }
-
-    public KitchenObject GetKitchenObject()
-    {
-        return _kitchenObject;
-    }
-
-    public void ClearKitchenObject()
-    {
-        _kitchenObject = null;
-    }
-
-    public bool HasKitchenObject()
-    {
-        return _kitchenObject != null;
-    }
+    
 }
