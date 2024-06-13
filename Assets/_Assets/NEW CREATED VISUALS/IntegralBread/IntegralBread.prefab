@@ -1,0 +1,110 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8089292889395334396
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6836624531945669476}
+  - component: {fileID: 6231520126365949910}
+  m_Layer: 0
+  m_Name: IntegralBread
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6836624531945669476
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8089292889395334396}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6036088270640108955}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6231520126365949910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8089292889395334396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f9d7f0099bfd8a4eaaa27b491d3c02a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _kitchenObjectSo: {fileID: 11400000, guid: 1a541af989e5d3946b00a2ee7bb271ae, type: 2}
+--- !u!1001 &7435004581230101275
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 6836624531945669476}
+    m_Modifications:
+    - target: {fileID: 3812876574508226176, guid: f267b345563b12a4ebbf61fb78c377cc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3812876574508226176, guid: f267b345563b12a4ebbf61fb78c377cc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3812876574508226176, guid: f267b345563b12a4ebbf61fb78c377cc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3812876574508226176, guid: f267b345563b12a4ebbf61fb78c377cc, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3812876574508226176, guid: f267b345563b12a4ebbf61fb78c377cc, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3812876574508226176, guid: f267b345563b12a4ebbf61fb78c377cc, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3812876574508226176, guid: f267b345563b12a4ebbf61fb78c377cc, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3812876574508226176, guid: f267b345563b12a4ebbf61fb78c377cc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3812876574508226176, guid: f267b345563b12a4ebbf61fb78c377cc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3812876574508226176, guid: f267b345563b12a4ebbf61fb78c377cc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3812876574508226177, guid: f267b345563b12a4ebbf61fb78c377cc, type: 3}
+      propertyPath: m_Name
+      value: IntegraBread_Visual
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f267b345563b12a4ebbf61fb78c377cc, type: 3}
+--- !u!4 &6036088270640108955 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3812876574508226176, guid: f267b345563b12a4ebbf61fb78c377cc, type: 3}
+  m_PrefabInstance: {fileID: 7435004581230101275}
+  m_PrefabAsset: {fileID: 0}
