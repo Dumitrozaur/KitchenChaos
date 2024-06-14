@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22fd4cb222cf8cb459dc15282e34af66, type: 3}
+  m_Name: Burgur
+  m_EditorClassIdentifier: 
+  KitchenObjectSoList:
+  - {fileID: 11400000, guid: 860c19c198962e74cae1d5d04fd3f9fc, type: 2}
+  - {fileID: 11400000, guid: cd57bc3910cf4db4da14974271e27aec, type: 2}
+  - {fileID: 11400000, guid: 35eea8c44a00cd8478e49bb86745f131, type: 2}
+  recipeName: CheeseBurgur

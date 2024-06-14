@@ -6,6 +6,7 @@ public class BaseCounter : MonoBehaviour, IKitchenObjectParent
 {
     [SerializeField] private Transform kitchenObjectHoldPoint;
     private KitchenObject _kitchenObject;
+    
     public virtual void Interact(Player player)
     {
         Debug.LogError("BaseCounter.Interact()");

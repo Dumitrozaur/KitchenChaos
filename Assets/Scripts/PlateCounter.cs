@@ -3,12 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlateCounter : BaseCounter, IKitchenObjectParent
+public class PlateCounter : BaseCounter
 {
-    //IKit.
-    [SerializeField] private Transform kitchenObjectHoldPoint; 
-    private KitchenObject _kitchenObject;
-    //IKit.
 
     public event EventHandler OnPlateSpawned;
     public event EventHandler OnPlateRemoved;
@@ -55,31 +51,4 @@ public class PlateCounter : BaseCounter, IKitchenObjectParent
             }
         }
     }
-
-    //IKit.
-    public Transform GetKitchenObjectFollowTransform()
-    {
-        return kitchenObjectHoldPoint;
-    }
-
-    public void SetKitchenObject(KitchenObject kitchenObject)
-    {
-        this._kitchenObject = kitchenObject;
-    }
-
-    public KitchenObject GetKitchenObject()
-    {
-        return _kitchenObject;
-    }
-
-    public void ClearKitchenObject()
-    {
-        _kitchenObject = null;
-    }
-
-    public bool HasKitchenObject()
-    {
-        return _kitchenObject != null;
-    }
-    //IKit.
 }

@@ -5,22 +5,22 @@ using UnityEngine;
 public class ContainerCounter : BaseCounter
 {
     [SerializeField] private KitchenObjectSO _kitchenObjectSo;
-    [SerializeField] private Transform counterTopPoit;
     
-    private KitchenObject _kitchenObject;
     
     public override void Interact(Player player)
     {
         if (!player.HasKitchenObject())
         {
-            if (_kitchenObject == null)
+            if (GetKitchenObject() == null)
             {
-                Transform kitchenObjectTransform = Instantiate(_kitchenObjectSo.prefab, counterTopPoit);
+                Debug.Log("");
+                Transform kitchenObjectTransform = Instantiate(_kitchenObjectSo.prefab, GetKitchenObjectFollowTransform());
                 kitchenObjectTransform.GetComponent<KitchenObject>().SetKitchenObjectParent(this);
             }
             else
             {
-                _kitchenObject.SetKitchenObjectParent(player);
+                Debug.Log("Seteaza?");
+                GetKitchenObject().SetKitchenObjectParent(player);
             }
         }
     }

@@ -219,10 +219,10 @@
     },
     "m_PreviewData": {
         "serializedMesh": {
-            "m_SerializedMesh": "{\"mesh\":{\"instanceID\":0}}",
+            "m_SerializedMesh": "{\"mesh\":{\"fileID\":10210,\"guid\":\"0000000000000000e000000000000000\",\"type\":0}}",
             "m_Guid": ""
         },
-        "preventRotation": false
+        "preventRotation": true
     },
     "m_Path": "Shader Graphs",
     "m_GraphPrecision": 1,
@@ -1218,10 +1218,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -714.4000854492188,
-            "y": -293.60003662109377,
-            "width": 208.00006103515626,
-            "height": 277.6000061035156
+            "x": -718.4000244140625,
+            "y": -394.3999938964844,
+            "width": 208.0,
+            "height": 277.5999755859375
         }
     },
     "m_Slots": [
@@ -1256,10 +1256,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1457.5999755859375,
-            "y": 415.20001220703127,
+            "x": -1492.800048828125,
+            "y": 416.79998779296877,
             "width": 110.4000244140625,
-            "height": 33.600006103515628
+            "height": 33.5999755859375
         }
     },
     "m_Slots": [
@@ -1316,10 +1316,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1572.0,
-            "y": 231.20001220703126,
+            "x": -1616.800048828125,
+            "y": 144.7999725341797,
             "width": 124.0,
-            "height": 172.79998779296876
+            "height": 172.80003356933595
         }
     },
     "m_Slots": [
