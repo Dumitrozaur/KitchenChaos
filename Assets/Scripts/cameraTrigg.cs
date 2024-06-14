@@ -17,7 +17,7 @@ public class cameraTrigg : MonoBehaviour
 
     private void OnTriggerExit(Collider col)
     {
-        if (room1.enabled == true)
+        if(room1.enabled == true)
         {
             room1.enabled = false;
             room2.enabled = true;
@@ -26,6 +26,6 @@ public class cameraTrigg : MonoBehaviour
         {
             room2.enabled = false;
             room1.enabled = true;
-        }
+        }              
     }
 }
