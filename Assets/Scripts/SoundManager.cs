@@ -5,7 +5,7 @@ using UnityEditor;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class NewBehaviourScript1 : MonoBehaviour
+public class SoundManager : MonoBehaviour
 {
     [SerializeField] private AudioClipsRefsSO audioClipsRefsSo;
     private void Start()

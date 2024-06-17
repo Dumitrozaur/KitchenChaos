@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1305d7b042d7a784c8030e8a1217f8f0, type: 3}
-  m_Name: Recipe
+  m_Script: {fileID: 11500000, guid: 22fd4cb222cf8cb459dc15282e34af66, type: 3}
+  m_Name: Salad
   m_EditorClassIdentifier: 
-  recipeSOList:
-  - {fileID: 11400000, guid: e78f916d771571b499d683b46db3241a, type: 2}
-  - {fileID: 11400000, guid: 72a42574d5856134cad84457335f686c, type: 2}
+  KitchenObjectSoList: []
+  recipeName: Salad
