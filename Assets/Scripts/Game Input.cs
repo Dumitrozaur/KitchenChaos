@@ -10,6 +10,16 @@ using Debug = System.Diagnostics.Debug;
 
 public class GameInput : MonoBehaviour
 {
+    public enum Bindings
+    {
+        MoveUp,
+        MoveDown,
+        MoveLeft,
+        MoveRight,
+        Interact,
+        AlternateInteract,
+        Pause
+    }
     public static GameInput Instance { get; private set; }
     public event EventHandler OnInteractAction;
     public event EventHandler OnInteractAlternateAction;
@@ -61,5 +71,28 @@ public class GameInput : MonoBehaviour
         inputVector = inputVector.normalized;
 
         return inputVector;
+    }
+
+    public string GetBndingText(Bindings bindings)
+    {
+        switch (bindings)
+        {
+            case Bindings.MoveUp:
+                return _playerInput.Player.Move.bindings[1].ToDisplayString();
+            case Bindings.MoveDown:
+                return _playerInput.Player.Move.bindings[2].ToDisplayString();
+            case Bindings.MoveLeft:
+                return _playerInput.Player.Move.bindings[3].ToDisplayString();
+            case Bindings.MoveRight:
+                return _playerInput.Player.Move.bindings[4].ToDisplayString();
+            case Bindings.Interact:
+                return _playerInput.Player.Interact.bindings[0].ToDisplayString();
+            case Bindings.AlternateInteract:
+                return _playerInput.Player.InteractAlternate.bindings[0].ToDisplayString();
+            case Bindings.Pause:
+                return _playerInput.Player.Pause.bindings[0].ToDisplayString();
+            default:
+                return "Key Not Found!";
+        } 
     }
 }

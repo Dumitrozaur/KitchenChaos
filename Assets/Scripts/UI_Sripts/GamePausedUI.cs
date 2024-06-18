@@ -9,7 +9,9 @@ public class GamePausedUI : MonoBehaviour
 {
     [SerializeField] private Button resumeButton;
     [SerializeField] private Button mainMenuButton;
-
+    [SerializeField] private Button optionsButton;
+    [SerializeField] private VolumeControlerUI volumeControlerPanel;
+    
     private void Awake()
     {
         resumeButton.onClick.AddListener((() =>
@@ -17,12 +19,19 @@ public class GamePausedUI : MonoBehaviour
             GameManager1.Instance.TogglePauseGame();
         }));
         
+        optionsButton.onClick.AddListener(OnOptionsMenuButton);
+        
         mainMenuButton.onClick.AddListener((() =>
         {
             Loader.Load(Loader.Scene.MainMenuScene);
         }));
 
         Time.timeScale = 1f;
+    }
+
+    private void OnOptionsMenuButton()
+    {
+        volumeControlerPanel.ShowOptions();
     }
 
     private void Start()
