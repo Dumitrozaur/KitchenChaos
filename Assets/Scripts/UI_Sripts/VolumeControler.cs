@@ -7,7 +7,7 @@ using UnityEngine.Events;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
 
-public class VolumeControlerUI : MonoBehaviour
+public class VolumeControler : MonoBehaviour
 {
     private const String PLAYER_PREFS_VOLUME_MUSIC = "BackroundMusicVolume";
     private const String PLAYER_PREFS_VOLUME_SFX = "EffectsVolume";
@@ -16,31 +16,18 @@ public class VolumeControlerUI : MonoBehaviour
     [SerializeField] private Slider sfxVolumeSlider;
     [SerializeField] private Slider musicVolumeSlider;
     [SerializeField] private AudioSource backroundMusic;
-    [SerializeField] private Button closeOptionButton;
-    
 
     private void Start()
     {
         musicVolumeSlider.onValueChanged.AddListener(ChangeMusicVolume);
         sfxVolumeSlider.onValueChanged.AddListener(ChangeSfxVolume);
-        
-        closeOptionButton.onClick.AddListener(CloseOptions);
-        CloseOptions();
-        
-        
     }
 
-    private void CloseOptions()
-    {
-        gameObject.SetActive(false);
-    }
-
-    public void ShowOptions()
+    public void UpdateSliders()
     {
         musicVolumeSlider.value = PlayerPrefs.GetFloat(PLAYER_PREFS_VOLUME_MUSIC, 1f);
         sfxVolumeSlider.value = PlayerPrefs.GetFloat(PLAYER_PREFS_VOLUME_SFX, 1f);
         
-        gameObject.SetActive(true);
     }
 
     private void ChangeSfxVolume(float volume)
@@ -59,4 +46,5 @@ public class VolumeControlerUI : MonoBehaviour
         PlayerPrefs.Save();
 
     }
+    
 }

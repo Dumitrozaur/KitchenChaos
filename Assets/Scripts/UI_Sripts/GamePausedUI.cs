@@ -10,7 +10,7 @@ public class GamePausedUI : MonoBehaviour
     [SerializeField] private Button resumeButton;
     [SerializeField] private Button mainMenuButton;
     [SerializeField] private Button optionsButton;
-    [SerializeField] private VolumeControlerUI volumeControlerPanel;
+    [SerializeField] private OtherOptionsUI volumeControlerPanel;
     
     private void Awake()
     {
@@ -23,15 +23,15 @@ public class GamePausedUI : MonoBehaviour
         
         mainMenuButton.onClick.AddListener((() =>
         {
-            Loader.Load(Loader.Scene.MainMenuScene);
+            Loader.Load(Loader.Scene.MenuScene);
         }));
-
+        volumeControlerPanel.Show();
         Time.timeScale = 1f;
     }
 
     private void OnOptionsMenuButton()
     {
-        volumeControlerPanel.ShowOptions();
+       // volumeControlerPanel.UpdateSliders();
     }
 
     private void Start()

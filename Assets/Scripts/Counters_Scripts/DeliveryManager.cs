@@ -61,18 +61,19 @@ public class DeliveryManager : MonoBehaviour
                     foreach (KitchenObjectSO plateKitchenObjectSo in plateKitchenObject.GetIngredientList())
                     {
                         //Through all ingridients in the plate
-
+                        Debug.Log(plateKitchenObject.GetIngredientList());
                         if (plateKitchenObjectSo == recipeKitchenObjectSo)
                         {
                             //ingridient match
                             ingridientFound = true;
-                            break;
+                            
                         }
                     }
 
                     if (!ingridientFound)
                     {
                         //ingridient was not found on the plate
+                        Debug.Log("Recipe was not found!");
                         plateContentsMatchesRecipe = false;
                     }
                 }
