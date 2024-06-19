@@ -32,14 +32,16 @@ public class DeliveryManager : MonoBehaviour
         if (spawnRecipeTimer <= 0f)
         {
             spawnRecipeTimer = spawnRecipeTimerMax;
+            
+            if (waitingRecipeSOList.Count < waitingRecipesMax)
+            { 
+                RecipeSo waitingRecipeSo = _recipeList.recipeSOList[Random.Range(0, _recipeList.recipeSOList.Count)];
+                waitingRecipeSOList.Add(waitingRecipeSo);
+                OnRecipeAdded?.Invoke(this, EventArgs.Empty);
+            }
         }
 
-        if (waitingRecipeSOList.Count < waitingRecipesMax)
-        { 
-            RecipeSo waitingRecipeSo = _recipeList.recipeSOList[Random.Range(0, _recipeList.recipeSOList.Count)];
-            waitingRecipeSOList.Add(waitingRecipeSo);
-            OnRecipeAdded?.Invoke(this, EventArgs.Empty);
-        }
+        
     }
 
     public void DeliverRecipe(PlateKitchenObject plateKitchenObject)
