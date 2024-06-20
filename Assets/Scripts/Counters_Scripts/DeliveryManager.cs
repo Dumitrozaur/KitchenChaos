@@ -31,16 +31,15 @@ public class DeliveryManager : MonoBehaviour
         spawnRecipeTimer -= Time.deltaTime;
         if (spawnRecipeTimer <= 0f)
         {
-            spawnRecipeTimer = spawnRecipeTimerMax;
+            spawnRecipeTimer = spawnRecipeTimerMax; 
             
-            if (waitingRecipeSOList.Count < waitingRecipesMax)
+            if (GameManager1.Instance.IsGamePlaying() && waitingRecipeSOList.Count < waitingRecipesMax)
             { 
                 RecipeSo waitingRecipeSo = _recipeList.recipeSOList[Random.Range(0, _recipeList.recipeSOList.Count)];
                 waitingRecipeSOList.Add(waitingRecipeSo);
                 OnRecipeAdded?.Invoke(this, EventArgs.Empty);
             }
         }
-
         
     }
 
@@ -66,7 +65,7 @@ public class DeliveryManager : MonoBehaviour
                         {
                             //ingridient match
                             ingridientFound = true;
-                            
+                            break;
                         }
                     }
 

@@ -15263,9 +15263,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab95cb7b073984745b5c5009c73cf07a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sfxVolumeSlider: {fileID: 1195375678}
-  musicVolumeSlider: {fileID: 616248698}
-  backroundMusic: {fileID: 418522699}
+  musicSlider: {fileID: 616248698}
+  effectsSlider: {fileID: 1195375678}
+  closedButton: {fileID: 1917757774}
+  backgroundMusic: {fileID: 418522699}
 --- !u!114 &631752934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15278,10 +15279,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edcc1755f8983d646a55750afbd990f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  closeOptionButton: {fileID: 1917757774}
   showTutorialButton: {fileID: 638249851}
-  tutorialUI: {fileID: 1339450952}
-  _volumeControlerUI: {fileID: 631752933}
+  _tutoriaUi: {fileID: 1339450952}
 --- !u!1001 &635662070
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22788,9 +22787,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resumeButton: {fileID: 1350362585}
-  mainMenuButton: {fileID: 34375848}
-  optionsButton: {fileID: 244400453}
-  volumeControlerPanel: {fileID: 631752934}
+  MainMenuButton: {fileID: 34375848}
+  volumeControllerPanel: {fileID: 631752933}
+  optionsMenuButton: {fileID: 244400453}
+  gameSceneName: GameScene
+  mainMenuSceneAsset: {fileID: 102900000, guid: 84492838a21adf943958499b5e90e911, type: 3}
 --- !u!114 &949477573
 MonoBehaviour:
   m_ObjectHideFlags: 0

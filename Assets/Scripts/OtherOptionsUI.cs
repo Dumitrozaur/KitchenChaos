@@ -1,45 +1,46 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class OtherOptionsUI : MonoBehaviour
 {
-    [SerializeField] private Button closeOptionButton;
-    [SerializeField] private Button showTutorialButton;
-    [SerializeField] private TutorialUI tutorialUI;
-    [SerializeField] private VolumeControler _volumeControlerUI;
-    private Action onCloseButtonAction;
 
-    
+    [SerializeField] private Button showTutorialButton;
+    [SerializeField] private TutorialUI _tutoriaUi;
+
     private void Start()
     {
-        closeOptionButton.onClick.AddListener((() =>
-        {
-            CloseOptions();
-            onCloseButtonAction();
-        }));   
-        showTutorialButton.onClick.AddListener(ShowTutorialWindow);
-        
+
+
+        showTutorialButton.onClick.AddListener(showTutorialWindow);
+        Hide();
+
     }
 
-    private void ShowTutorialWindow()
+    private void showTutorialWindow()
     {
-        tutorialUI.Show();
+        _tutoriaUi.Show();
     }
 
-    private void CloseOptions()
+
+
+    private void Hide()
     {
         gameObject.SetActive(false);
     }
-
     public void Show()
     {
-        this.onCloseButtonAction = onCloseButtonAction;
-        _volumeControlerUI.UpdateSliders();
+
+
+
         gameObject.SetActive(true);
-        closeOptionButton.Select();
     }
+
+
+
+
+
+
+
 }

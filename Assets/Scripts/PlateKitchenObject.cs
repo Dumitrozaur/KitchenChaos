@@ -45,4 +45,6 @@ public class PlateKitchenObject : KitchenObject
     {
         return kitchenObjectSoList;
     }
+    
+    
 }

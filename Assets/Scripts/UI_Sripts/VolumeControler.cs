@@ -1,50 +1,58 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.Rendering;
 using UnityEngine.UI;
 
-public class VolumeControler : MonoBehaviour
+public class VolumeController : MonoBehaviour
 {
-    private const String PLAYER_PREFS_VOLUME_MUSIC = "BackroundMusicVolume";
-    private const String PLAYER_PREFS_VOLUME_SFX = "EffectsVolume";
+    [SerializeField] private Slider musicSlider;
+    [SerializeField] private Slider effectsSlider;
+    [SerializeField] private Button closedButton;
+    [SerializeField] private AudioSource backgroundMusic;
 
-    
-    [SerializeField] private Slider sfxVolumeSlider;
-    [SerializeField] private Slider musicVolumeSlider;
-    [SerializeField] private AudioSource backroundMusic;
+    private const string PLAYER_PREFS_MUSIC = "BackgroundMusicVolume";
+    private const string PLAYER_PREFS_EFFECTS = "EffectsVolume";
 
     private void Start()
     {
-        musicVolumeSlider.onValueChanged.AddListener(ChangeMusicVolume);
-        sfxVolumeSlider.onValueChanged.AddListener(ChangeSfxVolume);
+        musicSlider.onValueChanged.AddListener(ChangeMusicVolume);
+        effectsSlider.onValueChanged.AddListener(ChangeEffectVolume);
+        closedButton.onClick.AddListener(Hide);
+        Hide();
+
     }
 
-    public void UpdateSliders()
+
+    private void Hide()
     {
-        musicVolumeSlider.value = PlayerPrefs.GetFloat(PLAYER_PREFS_VOLUME_MUSIC, 1f);
-        sfxVolumeSlider.value = PlayerPrefs.GetFloat(PLAYER_PREFS_VOLUME_SFX, 1f);
-        
+        gameObject.SetActive(false);
+    }
+    public void Show()
+    {
+        musicSlider.value =PlayerPrefs.GetFloat(PLAYER_PREFS_MUSIC,1f);
+        effectsSlider.value = PlayerPrefs.GetFloat(PLAYER_PREFS_EFFECTS,1f);
+
+
+        gameObject.SetActive(true);
     }
 
-    private void ChangeSfxVolume(float volume)
-    {
-        SoundManager.Instance.EffectsVolume = volume;
-        
-        PlayerPrefs.SetFloat(PLAYER_PREFS_VOLUME_SFX, volume);
+    private void ChangeEffectVolume(float volumeEffects)
+    { 
+        SoundManager.Instance.EffectsVolume = volumeEffects;
+        PlayerPrefs.SetFloat(PLAYER_PREFS_EFFECTS,volumeEffects);
         PlayerPrefs.Save();
     }
 
     private void ChangeMusicVolume(float volume)
     {
-        backroundMusic.volume = volume;
-        
-        PlayerPrefs.SetFloat(PLAYER_PREFS_VOLUME_MUSIC, volume);
-        PlayerPrefs.Save();
+        backgroundMusic.volume = volume;
 
+        PlayerPrefs.SetFloat(PLAYER_PREFS_MUSIC,volume);
+        PlayerPrefs.Save();
     }
-    
+
+
+
+
 }
