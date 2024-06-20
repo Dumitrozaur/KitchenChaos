@@ -11,6 +11,8 @@ public class GamePausedUI : MonoBehaviour
     [SerializeField] private Button mainMenuButton;
     [SerializeField] private Button optionsButton;
     [SerializeField] private OtherOptionsUI volumeControlerPanel;
+    [SerializeField] private VolumeControler volumeControler;
+
     
     private void Awake()
     {
@@ -31,7 +33,7 @@ public class GamePausedUI : MonoBehaviour
 
     private void OnOptionsMenuButton()
     {
-       // volumeControlerPanel.UpdateSliders();
+        volumeControler.UpdateSliders();
     }
 
     private void Start()

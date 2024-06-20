@@ -22,6 +22,7 @@ public class OtherOptionsUI : MonoBehaviour
             onCloseButtonAction();
         }));   
         showTutorialButton.onClick.AddListener(ShowTutorialWindow);
+        
     }
 
     private void ShowTutorialWindow()
