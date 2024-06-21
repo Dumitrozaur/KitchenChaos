@@ -51,6 +51,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   plateKitchenObject: {fileID: 4549050592894964376, guid: 71122edda1963e540aaaee4dfb25f2f2, type: 3}
+  kitchenObjectSoGameObjectsList: []
 --- !u!1001 &198624512311579801
 PrefabInstance:
   m_ObjectHideFlags: 0

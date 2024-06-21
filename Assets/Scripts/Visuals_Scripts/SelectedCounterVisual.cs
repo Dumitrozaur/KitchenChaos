@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class SelectedCounterVisual : MonoBehaviour
 {
@@ -11,9 +12,26 @@ public class SelectedCounterVisual : MonoBehaviour
 
     private void Start()
     {
-        //Player.Instance.OnSelectedCounterChanged += OnSelectedCounterChanged;
+        if (Player.LocalInstance != null)
+        {
+            Player.LocalInstance.OnSelectedCounterChanged -= OnSelectedCounterChanged;
+            Player.LocalInstance.OnSelectedCounterChanged += OnSelectedCounterChanged;
+        }else
+        {
+            Player.OnAnyPlayerSpawned += PlayerSpawned;
+        }
+   
     }
-    
+
+    private void PlayerSpawned(object sender, EventArgs e)
+    {
+        if (Player.LocalInstance != null)
+        {
+            Player.LocalInstance.OnSelectedCounterChanged -= OnSelectedCounterChanged;
+            Player.LocalInstance.OnSelectedCounterChanged += OnSelectedCounterChanged;
+        }
+    }
+
     private void OnSelectedCounterChanged(object sender, Player.OnSelectedCounterChangedEventArgs e)
     {
         foreach (var selectedVisual in selectedCounter)
