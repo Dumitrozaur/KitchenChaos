@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6968409478494977507}
   - component: {fileID: 4586716215454764570}
   - component: {fileID: -5746555946516650305}
+  - component: {fileID: 2583272409203609436}
   m_Layer: 20
   m_Name: Player
   m_TagString: Player
@@ -51,7 +52,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9349780901a8b64fb2900d1751b70c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameInput: {fileID: 0}
   MovSpeed: 10
   rotateSpeed: 5
   _playerRadius: 0.5
@@ -73,6 +73,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6802f8e8b314154b9a956b6d960f3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TransitionStateInfoList: []
+  m_Animator: {fileID: 1853005872498613306}
   player: {fileID: 3481483738220120201}
 --- !u!95 &1853005872498613306
 Animator:
@@ -161,6 +163,20 @@ MonoBehaviour:
   AlwaysReplicateAsRoot: 0
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
+--- !u!114 &2583272409203609436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2749367376296923714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06df656df4e92ba4aafadac979825bcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TransitionStateInfoList: []
+  m_Animator: {fileID: 1853005872498613306}
 --- !u!1 &7547256359879391461
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,10 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class DeliveryManager : MonoBehaviour
+public class DeliveryManager : NetworkBehaviour
 {
     public event EventHandler OnRecipeAdded;
     public event EventHandler OnRecipeCompleted;
@@ -28,21 +29,32 @@ public class DeliveryManager : MonoBehaviour
 
     private void Update()
     {
+        if(!IsServer)
+        {
+            return;
+        }
         spawnRecipeTimer -= Time.deltaTime;
         if (spawnRecipeTimer <= 0f)
         {
             spawnRecipeTimer = spawnRecipeTimerMax; 
             
             if (GameManager1.Instance.IsGamePlaying() && waitingRecipeSOList.Count < waitingRecipesMax)
-            { 
-                RecipeSo waitingRecipeSo = _recipeList.recipeSOList[Random.Range(0, _recipeList.recipeSOList.Count)];
-                waitingRecipeSOList.Add(waitingRecipeSo);
-                OnRecipeAdded?.Invoke(this, EventArgs.Empty);
+            {
+                int waitingRecipeSoIndex = Random.Range(0, _recipeList.recipeSOList.Count);
+                RecipeSo waitingRecipeSo = _recipeList.recipeSOList[waitingRecipeSoIndex];
+                SpawnedNewWaitingRecipeClientRpc(waitingRecipeSoIndex);
+
             }
         }
         
     }
-
+    [ClientRpc]
+    private void SpawnedNewWaitingRecipeClientRpc(int waitingRecipeSoIndex)
+    {
+        RecipeSo waitingRecipeSo = _recipeList.recipeSOList[waitingRecipeSoIndex];
+        waitingRecipeSOList.Add(waitingRecipeSo);
+        OnRecipeAdded?.Invoke(this, EventArgs.Empty);
+    }
     public void DeliverRecipe(PlateKitchenObject plateKitchenObject)
     {
         for (int i = 0; i < waitingRecipeSOList.Count; i++)
