@@ -63,15 +63,20 @@ public class Player : NetworkBehaviour, IKitchenObjectParent
 
     private void Update()
     {
+        if (!IsOwner)
+        {
+            return;
+        }
+        
         HandleMovement();
         HandleInteraction();
+        
     }
 
     public bool Walking()
     {
         return !isWalking;
     }
-    
     
     private void HandleInteraction()
     {
@@ -195,5 +200,10 @@ public class Player : NetworkBehaviour, IKitchenObjectParent
     public bool HasKitchenObject()
     {
         return _kitchenObject != null;
+    }
+
+    public NetworkObject GetNetworkObject()
+    {
+        return NetworkObject;
     }
 }
