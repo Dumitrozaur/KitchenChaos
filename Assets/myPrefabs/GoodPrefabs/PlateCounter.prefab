@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 5177899885047389027}
   - component: {fileID: 7106867910343590390}
   - component: {fileID: 4601090066013074158}
+  - component: {fileID: 3449229968448567742}
   m_Layer: 6
   m_Name: PlateCounter
   m_TagString: Untagged
@@ -102,6 +103,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   kitchenObjectHoldPoint: {fileID: 6633156343531845596}
   plateObject: {fileID: 11400000, guid: 9a1d1589cf5fed84c9026b9dd51a2b7d, type: 2}
+--- !u!114 &3449229968448567742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4563135357022079670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 951099334
+  AlwaysReplicateAsRoot: 0
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
 --- !u!1001 &3074598784558130699
 PrefabInstance:
   m_ObjectHideFlags: 0

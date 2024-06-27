@@ -906,6 +906,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7348681308799765303, guid: 261e399099c5bf04fa2cb26542add344, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 951099334
+      objectReference: {fileID: 0}
     - target: {fileID: 4563135357022079670, guid: 261e399099c5bf04fa2cb26542add344, type: 3}
       propertyPath: m_Name
       value: CuttingCounterV2 Variant
@@ -982,7 +986,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   kitchenObjectHoldPoint: {fileID: 5011569493754235545}
-  cutKitObjectSO: {fileID: 11400000, guid: e435365e843e30b4ea2d426b077df35d, type: 2}
+  cuttingRecipies:
+  - {fileID: 0}
+  - {fileID: 0}
+  cuttingProgress: 0
 --- !u!4 &5011569493754235545 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6633156343531845596, guid: 261e399099c5bf04fa2cb26542add344, type: 3}

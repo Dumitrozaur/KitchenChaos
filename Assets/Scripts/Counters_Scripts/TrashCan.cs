@@ -17,8 +17,7 @@ public class TrashCan : BaseCounter
     {
         if (player.HasKitchenObject())
         {
-            player.GetKitchenObject().DestroySelf();
-
+            KitchenObject.DestroyKitchenObject(player.GetKitchenObject());
             InteractLogicServerRpc();
         }
         

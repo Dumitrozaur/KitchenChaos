@@ -45,8 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc638b49b82825d48a8c060004b8e59d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _clearCounter: {fileID: 1662008151632149692}
-  selectedCounter: {fileID: 5553094969198114636}
+  currentCounter: {fileID: 0}
+  selectedCounter:
+  - {fileID: 0}
 --- !u!1 &2123294923567110843
 GameObject:
   m_ObjectHideFlags: 0
@@ -58,6 +59,7 @@ GameObject:
   - component: {fileID: 7349714711627238254}
   - component: {fileID: 4648942557960540667}
   - component: {fileID: 1662008151632149692}
+  - component: {fileID: -8564744619399984818}
   m_Layer: 6
   m_Name: ClearCounterBun
   m_TagString: Untagged
@@ -116,8 +118,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3b98ef485bae4947afb9fdb75cf7183, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  kitchenObjectHoldPoint: {fileID: 0}
   _kitchenObjectSo: {fileID: 11400000, guid: b85180eec6004d4409ac05ff2e21150c, type: 2}
-  counterTopPoit: {fileID: 9090870548024534993}
+--- !u!114 &-8564744619399984818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2123294923567110843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 951099334
+  AlwaysReplicateAsRoot: 0
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
 --- !u!1 &2706688334733387312
 GameObject:
   m_ObjectHideFlags: 0

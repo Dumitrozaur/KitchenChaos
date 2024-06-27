@@ -21,11 +21,6 @@ namespace DefaultNamespace
             DontDestroyOnLoad(gameObject);
 
         }
-
-        private void Start()
-        {
-
-        }
         
         public void SpawnKitchenObject(KitchenObjectSO kitchenObjectSO, IKitchenObjectParent kitchenObjectParent)
         {
@@ -38,26 +33,22 @@ namespace DefaultNamespace
             KitchenObjectSO kitchenObjectSO = GetKitchenObjectSOFromIndex(kitchenObjectSOIndex);
             Transform kitchenObjectTransform = Instantiate(kitchenObjectSO.prefab);
             
+            NetworkObject kitchenObjectNetworkObject = kitchenObjectTransform.GetComponent<NetworkObject>();
+            kitchenObjectNetworkObject.Spawn(true);
+            
+            KitchenObject kitchenObject = kitchenObjectTransform.GetComponent<KitchenObject>();
+            
             kitchenObjectParentNetworkObjectReference.TryGet(out NetworkObject kitchenObjectParentNetworkObject);
             IKitchenObjectParent kitchenObjectParent =
                 kitchenObjectParentNetworkObject.GetComponent<IKitchenObjectParent>();
 
-            
+            kitchenObject.SetKitchenObjectParent(kitchenObjectParent);
             if (kitchenObjectParent.HasKitchenObject())
             {
                 // Parent already spawned an object
                 return;
             }
-
             
-
-            NetworkObject kitchenObjectNetworkObject = kitchenObjectTransform.GetComponent<NetworkObject>();
-            kitchenObjectNetworkObject.Spawn(true);
-
-            KitchenObject kitchenObject = kitchenObjectTransform.GetComponent<KitchenObject>();
-
-
-            kitchenObject.SetKitchenObjectParent(kitchenObjectParent);
         }
 
         public int GetKitchenObjectSOIndex(KitchenObjectSO kitchenObjectSO)

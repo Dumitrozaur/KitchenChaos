@@ -4727,6 +4727,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1533144804}
     m_Modifications:
+    - target: {fileID: 3449229968448567742, guid: 371bfd77c4510284bb66dfeee1611e71, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 4220080449
+      objectReference: {fileID: 0}
     - target: {fileID: 4563135357022079670, guid: 371bfd77c4510284bb66dfeee1611e71, type: 3}
       propertyPath: m_Name
       value: PlateCounter
@@ -15285,6 +15289,10 @@ PrefabInstance:
     - target: {fileID: 7572872163054477924, guid: efca8676e1fd89e40be1a0e639d7384b, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9061257582085145615, guid: efca8676e1fd89e40be1a0e639d7384b, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 1633131810
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -37279,6 +37287,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1533144804}
     m_Modifications:
+    - target: {fileID: -8564744619399984818, guid: bdbd579ad0cef4043ac61354fad64036, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 407866263
+      objectReference: {fileID: 0}
     - target: {fileID: 1662008151632149692, guid: bdbd579ad0cef4043ac61354fad64036, type: 3}
       propertyPath: kitchenObjectHoldPoint
       value: 
@@ -38330,9 +38342,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeliveryCounter Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 3209722455480858519, guid: 9df170781a4e3e749850bb6f5d32923c, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 2114738013
+      objectReference: {fileID: 0}
     - target: {fileID: 8166323937326733373, guid: 9df170781a4e3e749850bb6f5d32923c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.68
+      value: -1.95
       objectReference: {fileID: 0}
     - target: {fileID: 8166323937326733373, guid: 9df170781a4e3e749850bb6f5d32923c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -38340,7 +38356,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8166323937326733373, guid: 9df170781a4e3e749850bb6f5d32923c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8.3
+      value: -0.96
       objectReference: {fileID: 0}
     - target: {fileID: 8166323937326733373, guid: 9df170781a4e3e749850bb6f5d32923c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -46403,6 +46419,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1533144804}
     m_Modifications:
+    - target: {fileID: -8564744619399984818, guid: bdbd579ad0cef4043ac61354fad64036, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 1977264903
+      objectReference: {fileID: 0}
     - target: {fileID: 1662008151632149692, guid: bdbd579ad0cef4043ac61354fad64036, type: 3}
       propertyPath: kitchenObjectHoldPoint
       value: 
@@ -47843,6 +47863,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1533144804}
     m_Modifications:
+    - target: {fileID: -8564744619399984818, guid: bdbd579ad0cef4043ac61354fad64036, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 1429847085
+      objectReference: {fileID: 0}
     - target: {fileID: 1662008151632149692, guid: bdbd579ad0cef4043ac61354fad64036, type: 3}
       propertyPath: kitchenObjectHoldPoint
       value: 
@@ -50215,6 +50239,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1533144804}
     m_Modifications:
+    - target: {fileID: -7396616984558425473, guid: 52dba5f79c0f9d94597a201c28d51447, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 3279461172
+      objectReference: {fileID: 0}
     - target: {fileID: 2009059488795344651, guid: 52dba5f79c0f9d94597a201c28d51447, type: 3}
       propertyPath: m_Name
       value: CuttingCounter
@@ -50608,6 +50636,10 @@ PrefabInstance:
     - target: {fileID: 932005733508759465, guid: 1240d9010fb42924f8d84636848702e7, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3209722455480858519, guid: 1240d9010fb42924f8d84636848702e7, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 4047641339
       objectReference: {fileID: 0}
     - target: {fileID: 8166323937326733373, guid: 1240d9010fb42924f8d84636848702e7, type: 3}
       propertyPath: m_LocalPosition.x

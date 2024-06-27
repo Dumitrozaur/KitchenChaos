@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7282133902065193472}
   - component: {fileID: 1792085263039295903}
   - component: {fileID: -2730196606537857796}
+  - component: {fileID: 2666595263770468542}
   m_Layer: 0
   m_Name: ChesseSlices
   m_TagString: Untagged
@@ -46,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f9d7f0099bfd8a4eaaa27b491d3c02a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  kitchenObjectSO: {fileID: 0}
+  kitchenObjectSO: {fileID: 11400000, guid: 3090d0ce12233a347bab68a60cf4888a, type: 2}
 --- !u!114 &-2730196606537857796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,6 +64,18 @@ MonoBehaviour:
   AlwaysReplicateAsRoot: 0
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
+--- !u!114 &2666595263770468542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3762600644645956996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 012a288861b578f49ab893f59a5b1aec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1230321656186612789
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -43,7 +43,7 @@ public class KitchenObject : NetworkBehaviour {
         this.kitchenObjectParent = kitchenObjectParent;
 
         if (kitchenObjectParent.HasKitchenObject()) {
-            Debug.LogError("IKitchenObjectParent already has a KitchenObject!"+kitchenObjectParent.GetNetworkObject().name);
+            Debug.Log("IKitchenObjectParent already has a KitchenObject!"+kitchenObjectParent.GetNetworkObject().name);
         }
 
         kitchenObjectParent.SetKitchenObject(this);
@@ -56,7 +56,9 @@ public class KitchenObject : NetworkBehaviour {
     }
 
     public void DestroySelf() {
+
         Destroy(gameObject);
+        
     }
 
     public void ClearKitchenObjectOnParent() {

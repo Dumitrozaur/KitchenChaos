@@ -30,7 +30,7 @@ public class GameManager1 : NetworkBehaviour
     private float waitingToStartTimer = 3f;
     private float countdownToStart = 3f;
     private float gamePlayingTimer = 20f;
-    private float gamePlayingTimerMax = 20f;
+    private float gamePlayingTimerMax = 200f;
     private bool isGamePaused = false;
 
     private void Awake()
