@@ -21,21 +21,37 @@ public class TutorialUI : MonoBehaviour
 
     private void Awake()
     {
-        if (PlayerPrefs.HasKey(PLAYER_PREFS_TUTORIAL_AUTOSHOW) == false)
-        {
+        //if (PlayerPrefs.HasKey(PLAYER_PREFS_TUTORIAL_AUTOSHOW) == false)
+        //{
             Show();
-            PlayerPrefs.SetInt(PLAYER_PREFS_TUTORIAL_AUTOSHOW,0);
-        }
-        else
-        {
-            Hide(this, EventArgs.Empty);
-        }
+        //    PlayerPrefs.SetInt(PLAYER_PREFS_TUTORIAL_AUTOSHOW,0);
+        //}
+        //else
+        //{
+        //    Hide(this, EventArgs.Empty);
+        //}
     }
 
     private void Start()
     {
-        GameInput.Instance.OnInteractAction += Hide;
+        GameInput.Instance.OnInteractAction += SetPlayerReady;
         UpdateVisual();
+        GameManager1.Instance.OnStatePlayerReady += OnPlayerReady;
+    }
+
+    private void SetPlayerReady(object sender, EventArgs e)
+    {
+        GameManager1.Instance.isLocalPlayerReady = true;
+        
+    }
+
+    private void OnPlayerReady(object sender, EventArgs e)
+    {
+        if (GameManager1.Instance.isLocalPlayerReady == true)
+        {
+            Debug.Log("Hide Tutorial");
+            Hide(this, EventArgs.Empty);
+        }
     }
 
     private void UpdateVisual()
