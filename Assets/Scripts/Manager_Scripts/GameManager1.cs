@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.Netcode;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Video;
 using Update = UnityEngine.PlayerLoop.Update;
 
@@ -17,6 +18,8 @@ public class GameManager1 : NetworkBehaviour
     public event EventHandler OnGameUnpaused;
 
     public Dictionary<ulong, bool> playersReadyDictionary;
+
+    [SerializeField] private Transform playerPrefab;
     
     private enum State
     {
@@ -91,6 +94,27 @@ public class GameManager1 : NetworkBehaviour
         state.Value = State.WaitingToStart;
         base.OnNetworkSpawn();
         state.OnValueChanged += OnStateChanged;
+        if (IsServer)
+        {
+            NetworkManager.Singleton.OnClientDisconnectCallback += NetworkManager_OnClickDisconectCallback;
+
+            NetworkManager.Singleton.SceneManager.OnLoadEventCompleted += SceneManager_OnLoadEnventCompleted;
+
+        }
+    }
+
+    private void SceneManager_OnLoadEnventCompleted(string scenename, LoadSceneMode loadscenemode, List<ulong> clientscompleted, List<ulong> clientstimedout)
+    {
+        
+    }
+
+    private void NetworkManager_OnClickDisconectCallback(ulong obj)
+    {
+        foreach (ulong clientId  in NetworkManager.Singleton.ConnectedClientsIds)
+        {
+            Transform playerTransform = Instantiate(playerPrefab);
+            playerTransform.GetComponent<NetworkObject>().SpawnAsPlayerObject(clientId, true);
+        }
     }
 
     private void OnStateChanged(State previousvalue, State newvalue)
@@ -182,6 +206,11 @@ public class GameManager1 : NetworkBehaviour
         return state.Value == State.GameOver;
     }
 
+    public bool IsWaitingToSTart()
+    {
+        return state.Value == State.WaitingToStart;
+    }
+
     public float GetPlayingTimerNormalized()
     {
         return 1 - (gamePlayingTimer / gamePlayingTimerMax);
@@ -191,5 +220,20 @@ public class GameManager1 : NetworkBehaviour
     private void SetPlayerReadyServerRpc(ServerRpcParams serverRpcParams = default)
     {
         playersReadyDictionary[serverRpcParams.Receive.SenderClientId] = true;
+    }
+    
+    public void PauseGameStart()
+    {
+        isGamePaused = !isGamePaused;
+        if (isGamePaused)
+        {
+            Time.timeScale = 0f;
+            OnGamePaused?.Invoke(this,EventArgs.Empty);
+        }
+        else
+        {
+            Time.timeScale = 1f;
+            OnGameUnpaused?.Invoke(this,EventArgs.Empty);
+        }
     }
 }

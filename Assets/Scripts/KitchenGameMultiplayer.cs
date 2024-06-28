@@ -5,8 +5,7 @@ using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace DefaultNamespace
-{
+
     public class KitchenGameMultiplayer : NetworkBehaviour
     {
         public static KitchenGameMultiplayer Instance { get; private set; }
@@ -22,6 +21,31 @@ namespace DefaultNamespace
 
         }
         
+        public void StartHost()
+        {
+            NetworkManager.Singleton.ConnectionApprovalCallback += NetworkManager_ConnectionApprovalCallback;
+            NetworkManager.Singleton.StartHost();
+        }
+        
+        public void StartClient()
+        {
+            NetworkManager.Singleton.StartClient();
+        }
+
+        private void NetworkManager_ConnectionApprovalCallback(NetworkManager.ConnectionApprovalRequest connectionApprovalRequest, NetworkManager.ConnectionApprovalResponse connectionApprovalResponse)
+        {
+            if (GameManager1.Instance.IsWaitingToSTart())
+            {
+                connectionApprovalResponse.Approved = true;
+                connectionApprovalResponse.CreatePlayerObject = true;
+            }
+            else
+            {
+                connectionApprovalResponse.Approved = false;
+            }
+        
+        }
+
         public void SpawnKitchenObject(KitchenObjectSO kitchenObjectSO, IKitchenObjectParent kitchenObjectParent)
         {
             SpawnKitchenObjectServerRpc(GetKitchenObjectSOIndex(kitchenObjectSO), kitchenObjectParent.GetNetworkObject());
@@ -86,4 +110,3 @@ namespace DefaultNamespace
     
        
     }
-}

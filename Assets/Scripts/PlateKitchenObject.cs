@@ -34,10 +34,10 @@ public class PlateKitchenObject : KitchenObject
             return false;
         }
         else
-        {
+        {/*
             AddIngredientServerRpc(
                 KitchenGameMultiplayer.Instance.GetKitchenObjectSOFromIndex(kitchenObjectSo)
-                );
+                );*/
             return true;
         }
     }

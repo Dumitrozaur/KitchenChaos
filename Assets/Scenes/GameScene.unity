@@ -15290,6 +15290,22 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7956942433090835591, guid: efca8676e1fd89e40be1a0e639d7384b, type: 3}
+      propertyPath: _fryingReceipeSosArray.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7956942433090835591, guid: efca8676e1fd89e40be1a0e639d7384b, type: 3}
+      propertyPath: _burningReceipeSosArray.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7956942433090835591, guid: efca8676e1fd89e40be1a0e639d7384b, type: 3}
+      propertyPath: _fryingReceipeSosArray.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 3259e0e2ea4d5f74fbf43c2e42bf7924, type: 2}
+    - target: {fileID: 7956942433090835591, guid: efca8676e1fd89e40be1a0e639d7384b, type: 3}
+      propertyPath: _burningReceipeSosArray.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 696a142d85845474bbd7e00d28c3093f, type: 2}
     - target: {fileID: 9061257582085145615, guid: efca8676e1fd89e40be1a0e639d7384b, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 1633131810
