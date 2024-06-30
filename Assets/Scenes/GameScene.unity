@@ -37998,6 +37998,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isLocalPlayerReady: 0
+  playerPrefab: {fileID: 0}
 --- !u!4 &1552755146
 Transform:
   m_ObjectHideFlags: 0

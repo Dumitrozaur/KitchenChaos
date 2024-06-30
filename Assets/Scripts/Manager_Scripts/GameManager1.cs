@@ -19,6 +19,8 @@ public class GameManager1 : NetworkBehaviour
 
     public Dictionary<ulong, bool> playersReadyDictionary;
 
+    public Dictionary<ulong, bool> playersPausedDictionary;
+
     [SerializeField] private Transform playerPrefab;
     
     private enum State
@@ -57,35 +59,7 @@ public class GameManager1 : NetworkBehaviour
             isLocalPlayerReady = true;
             SetPlayerReadyServerRpc();
             OnStatePlayerReady?.Invoke(this, EventArgs.Empty);
-
-            bool allPlayersReady = true;
             
-            foreach (ulong client in NetworkManager.Singleton.ConnectedClientsIds)
-            {
-                if (playersReadyDictionary.ContainsKey(client))
-                {
-                    if (playersReadyDictionary.TryGetValue(client, out bool isClientReady))
-                    {
-                        if (isClientReady = false)
-                        {
-                            allPlayersReady = false;
-                        }
-                    }
-                    else
-                    {
-                        allPlayersReady = false;
-                    }
-                }
-                else
-                {
-                    allPlayersReady = false;
-                }
-            }
-
-            if (allPlayersReady)
-            {
-                state.Value = State.CountdownToStart;
-            }
         }
     }
 
@@ -220,6 +194,22 @@ public class GameManager1 : NetworkBehaviour
     private void SetPlayerReadyServerRpc(ServerRpcParams serverRpcParams = default)
     {
         playersReadyDictionary[serverRpcParams.Receive.SenderClientId] = true;
+
+        bool allClientsReady = true;
+        foreach (ulong client in NetworkManager.Singleton.ConnectedClientsIds)
+        {
+            if (!playersReadyDictionary.ContainsKey(client) || !playersReadyDictionary[client])
+            {
+                allClientsReady = false;
+                break;
+            }
+        }
+        
+        if (allClientsReady)
+        {
+            state.Value = State.CountdownToStart;
+                
+        }
     }
     
     public void PauseGameStart()
@@ -227,6 +217,7 @@ public class GameManager1 : NetworkBehaviour
         isGamePaused = !isGamePaused;
         if (isGamePaused)
         {
+            PauseGameServerRpc();
             Time.timeScale = 0f;
             OnGamePaused?.Invoke(this,EventArgs.Empty);
         }
@@ -235,5 +226,15 @@ public class GameManager1 : NetworkBehaviour
             Time.timeScale = 1f;
             OnGameUnpaused?.Invoke(this,EventArgs.Empty);
         }
+    }
+    [ServerRpc(RequireOwnership = false)]
+    private void PauseGameServerRpc(ServerRpcParams serverRpcParams = default)
+    {
+        
+    }
+    [ServerRpc(RequireOwnership = false)]
+    private void UnpauseGameServerRpc(ServerRpcParams serverRpcParams = default)
+    {
+        
     }
 }

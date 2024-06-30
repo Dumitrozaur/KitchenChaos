@@ -13,7 +13,7 @@ public class WaitingForOtherPlayersUI : MonoBehaviour
 
     private void OnPlayerReady(object sender, EventArgs e)
     {
-        if (GameManager1.Instance.isLocalPlayerReady == true)
+        if (GameManager1.Instance.isLocalPlayerReady = true)
         {
             Debug.Log("Show Waiting");
             Show();

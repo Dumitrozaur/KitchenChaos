@@ -35,8 +35,8 @@ public class TutorialUI : MonoBehaviour
     private void Start()
     {
         GameInput.Instance.OnInteractAction += SetPlayerReady;
-        UpdateVisual();
         GameManager1.Instance.OnStatePlayerReady += OnPlayerReady;
+        UpdateVisual();
     }
 
     private void SetPlayerReady(object sender, EventArgs e)
@@ -47,7 +47,7 @@ public class TutorialUI : MonoBehaviour
 
     private void OnPlayerReady(object sender, EventArgs e)
     {
-        if (GameManager1.Instance.isLocalPlayerReady == true)
+        if (GameManager1.Instance.isLocalPlayerReady = true)
         {
             Debug.Log("Hide Tutorial");
             Hide(this, EventArgs.Empty);
