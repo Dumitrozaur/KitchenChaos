@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CharacterSelectReady : NetworkBehaviour
@@ -32,6 +33,8 @@ public class CharacterSelectReady : NetworkBehaviour
         if (allClientsReady)
         {
             Loader.LoadNetwork(Loader.Scene.GameScene);
+            
+            KitchenGameLobby.Instance.DeleteLobby();
         }
     }
 
@@ -39,4 +42,6 @@ public class CharacterSelectReady : NetworkBehaviour
     {
         SetPlayerReadyServerRpc();
     }
+    
+    
 }

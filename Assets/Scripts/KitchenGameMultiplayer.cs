@@ -9,6 +9,8 @@ using UnityEngine.SceneManagement;
     public class KitchenGameMultiplayer : NetworkBehaviour
     {
         public static KitchenGameMultiplayer Instance { get; private set; }
+        
+        public int MAX_PLAYERS_AMOUNT;
 
 
         [SerializeField] private KitchenObjectListSO kitchenObjectListSO;
